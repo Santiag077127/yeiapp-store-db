@@ -1,0 +1,6 @@
+# Requires a local Liquibase installation with the PostgreSQL JDBC driver available.
+changeLogFile=changelog-master.yaml
+url=jdbc:postgresql://localhost:5433/yeiapp-store-db
+username=yeiapp-store-db-user
+password=yeiapp-store-db-password
+driver=org.postgresql.Driver

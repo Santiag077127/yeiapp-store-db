@@ -1,0 +1,46 @@
+name: yeiapp-store-db
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-yeiapp-store-db}
+      POSTGRES_USER: ${POSTGRES_USER:-yeiapp-store-db-user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-yeiapp-store-db-password}
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U ${POSTGRES_USER:-yeiapp-store-db-user} -d ${POSTGRES_DB:-yeiapp-store-db}
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  liquibase:
+    build:
+      context: .
+      dockerfile: docker/liquibase/Dockerfile
+    image: yeiapp-store-db-liquibase:5.0.2
+    profiles:
+      - tooling
+    depends_on:
+      postgres:
+        condition: service_healthy
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+    entrypoint:
+      - liquibase
+      - --search-path=/workspace
+      - --changeLogFile=changelog-master.yaml
+      - --classpath=/liquibase/liquibase_libs/postgresql-42.7.8.jar
+      - --url=jdbc:postgresql://postgres:5432/${POSTGRES_DB:-yeiapp-store-db}
+      - --username=${POSTGRES_USER:-yeiapp-store-db-user}
+      - --password=${POSTGRES_PASSWORD:-yeiapp-store-db-password}
+      - update
+
+volumes:
+  postgres_data:
