@@ -1,0 +1,14 @@
+DROP FUNCTION IF EXISTS wallet.reject_transaction_mutation();
+DROP FUNCTION IF EXISTS wallet.apply_ledger_entry();
+DROP FUNCTION IF EXISTS wallet.guard_wallet_mutation();
+DROP FUNCTION IF EXISTS sales.assert_initial_assignment();
+DROP FUNCTION IF EXISTS inventory.assert_account_profile();
+DROP FUNCTION IF EXISTS identity.assert_seller_wallet();
+DROP FUNCTION IF EXISTS inventory.validate_assignment_history();
+DROP FUNCTION IF EXISTS sales.validate_subscription();
+DROP FUNCTION IF EXISTS sales.protect_order_item();
+DROP FUNCTION IF EXISTS sales.enforce_order_transition();
+DROP FUNCTION IF EXISTS catalog.protect_offer_mode();
+DROP FUNCTION IF EXISTS identity.reject_audit_mutation();
+DROP FUNCTION IF EXISTS identity.protect_profile_role();
+DROP FUNCTION IF EXISTS identity.enforce_profile_role();

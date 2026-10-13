@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01-create-integrity-triggers
+      author: santiago gordo perez
+      context: dev
+      labels: HU-01-dev
+      comment: creation of integrity triggers
+      changes:
+        - sqlFile:
+            path: 01_ddl/08_triggers/001-integrity-triggers.sql
+            endDelimiter: ";"
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: 05_rollbacks/01_ddl/08_triggers/001-integrity-triggers.sql
+            endDelimiter: ";"
+            stripComments: false

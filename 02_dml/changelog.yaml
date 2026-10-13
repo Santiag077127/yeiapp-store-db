@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - include:
+      file: 00_inserts/000-changelog.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 01_updates/000-changelog.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 02_deletes/000-changelog.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 03_upserts/000-changelog.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 04_patches/000-changelog.yaml
+      relativeToChangelogFile: true

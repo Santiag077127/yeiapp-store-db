@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: 00_transaction_blocks/000-changelog.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 01_manual_recoveries/000-changelog.yaml
+      relativeToChangelogFile: true

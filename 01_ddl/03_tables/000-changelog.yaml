@@ -1,0 +1,84 @@
+databaseChangeLog : 
+    - changeSet:
+        id: 01_create-tables-identity
+        author: santiago gordo perez
+        context: dev
+        labels: HU-01-dev
+        comment: creation of identity tables
+        changes:
+            - tagDatabase:
+                tag: v1.0.1
+            - sqlFile:
+                path: 01_ddl/03_tables/001-identity.sql
+                endDelimiter: ";"
+                stripComments: false
+        rollback:
+            - sqlFile:
+                path: 05_rollbacks/01_ddl/03_tables/001-identity.sql
+                endDelimiter: ";"
+                stripComments: false
+    - changeSet:
+        id: 02_create-tables-catalog
+        author: santiago gordo perez
+        context: dev
+        labels: HU-01-dev
+        comment: creation of catalog tables
+        changes:
+            - sqlFile:
+                path: 01_ddl/03_tables/002-catalog.sql
+                endDelimiter: ";"
+                stripComments: false
+        rollback:
+            - sqlFile:
+                path: 05_rollbacks/01_ddl/03_tables/002-catalog.sql
+                endDelimiter: ";"
+                stripComments: false
+    - changeSet:
+        id: 03_create-tables-sales
+        author: santiago gordo perez
+        context: dev
+        labels: HU-01-dev
+        comment: creation of sales tables
+        changes:
+            - sqlFile:
+                path: 01_ddl/03_tables/004-sales.sql
+                endDelimiter: ";"
+                stripComments: false
+        rollback:
+            - sqlFile:
+                path: 05_rollbacks/01_ddl/03_tables/004-sales.sql
+                endDelimiter: ";"
+                stripComments: false
+    - changeSet:
+        id: 04_create-tables-inventory
+        author: santiago gordo perez
+        context: dev
+        labels: HU-01-dev
+        comment: creation of inventory tables
+        changes:
+            - sqlFile:
+                path: 01_ddl/03_tables/003-inventory.sql
+                endDelimiter: ";"
+                stripComments: false
+        rollback:
+            - sqlFile:
+                path: 05_rollbacks/01_ddl/03_tables/003-inventory.sql
+                endDelimiter: ";"
+                stripComments: false
+    - changeSet:
+        id: 05_create-tables-wallet
+        author: santiago gordo perez
+        context: dev
+        labels: HU-01-dev
+        comment: creation of wallet tables
+        changes:
+            - sqlFile:
+                path: 01_ddl/03_tables/005-wallet.sql
+                endDelimiter: ";"
+                stripComments: false
+        rollback:
+            - sqlFile:
+                path: 05_rollbacks/01_ddl/03_tables/005-wallet.sql
+                endDelimiter: ";"
+                stripComments: false
+    

@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01-create-integrity-functions
+      author: santiago gordo perez
+      context: dev
+      labels: HU-01-dev
+      comment: creation of integrity functions
+      changes:
+        - sqlFile:
+            path: 01_ddl/06_functions/001-integrity-functions.sql
+            endDelimiter: "$$"
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: 05_rollbacks/01_ddl/06_functions/001-integrity-functions.sql
+            endDelimiter: ";"
+            stripComments: false
